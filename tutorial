@@ -1,0 +1,7 @@
+Setup:
+1. Instal mysql
+2. Install mysql-connector dengan perintah 'pip3 install mysql-connector'
+3. Untuk mengetes mysql-connector, jalankan stup/TestMysqlconnector
+4. Jalankan setup/CreateDatabase.py
+5. Jalankan setup/CreateTable.py
+
