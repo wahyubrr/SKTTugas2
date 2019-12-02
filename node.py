@@ -77,6 +77,7 @@ class SlavePeer(object):
 
 db.commit()
 
+
 server = zerorpc.Server(LeaderPeer())
 server.bind("tcp://0.0.0.0:4040")
 server.run()
