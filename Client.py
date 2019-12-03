@@ -1,5 +1,22 @@
 import zerorpc
+import time
+from threading import Thread
 
+leader_port_old = "4041"
+def check_leader():
+	time.sleep(5)
+	server = zerorpc.Client()
+	server.connect("tcp://127.0.0.1:" + leader_port_old)
+	while True:
+		leader_port = server.discover_leader()
+		if leader_port != leader_port_old:
+			server.close()
+			server = zerorpc.Client()
+			server.connect("tcp://127.0.0.1:" + leader_port)
+			leader_port_old = leader_port
+			print("leader was changed")
+
+thread = Thread()
 client = zerorpc.Client()
 client.connect("tcp://127.0.0.1:4040")
 # print client.hello("RPC")
